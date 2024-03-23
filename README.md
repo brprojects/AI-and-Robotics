@@ -25,6 +25,16 @@ The project utilizes RL techniques, specifically Q-learning, to train an agent t
 
 ### Results
 
+The Q-table values are updated using the Q-learning formula:
+`Q(s, a) = (1 - α) * Q(s, a) + α * (r + γ * maxₐ' Q(s', a'))`
+- Q(s, a) - the Q-value of state s and action a.
+- α - the learning rate (0 < α ≤ 1), controlling the weight given to new information compared to past Q-values.
+- r - the immediate reward obtained after taking action a in state s.
+- γ - the discount factor (0 ≤ γ < 1), determining the importance of future rewards.
+- s' - the next state after taking action a in state s.
+- maxₐ' Q(s', a') - the maximum Q-value of all possible actions in state s', estimating the future cumulative reward.
+
+
 The trained agent's performance is evaluated against the optimal strategy using its win percentage. The visualisation also shows agent's learning progress over episodes. As can be seen below, the agent's strategy becomes comparable to optimal after around 20,000 episodes. A learning rate is initially 0.4 and the exploration rate is initially 0.9, reduced by a factor of 0.95 and 0.85 respectively every 500 episodes.
 
 
@@ -36,3 +46,21 @@ the agent’s policy looks similar to this optimal strategy, differing mainly on
 | Optimal Strategy | Learnt Strategy |
 |--------------|-------------|
 | ![Optimal Grid](./images/optimal_grid.png) | ![Learnt Grid](./images/learnt_grid.png) |
+
+## Distribution Sampling
+
+### Overview
+
+This repository contains Python implementations of the Metropolis-Hastings and rejection sampling algorithms. Metropolis-Hastings is a Markov chain Monte Carlo (MCMC) method commonly used for sampling from complex probability distributions. Rejection sampling is a simple and widely used method for generating samples from a target probability distribution
+
+### Project Structure
+`metropolis_hastings_sampling.py`: Implementation of the Metropolis-Hastings algorithm.
+`rejection_sampling.py`: Implementation of the rejection sampling algorithm.
+
+### Results
+
+Target distribution: `0.5×Norm(x;μ1=20,σ1=3)+0.5×Norm(x;μ2=40,σ2=10)`  
+As shown below, both rejection and Metropolis-Hastings are able to effectively sample from the underlying distribution. However, in 20,000 samples, rejection sampling only obtains 3629 valid samples, an acceptance rate of only 18%. Metropolis-Hastings algorithm guarantees a valid sample for every attempted sample.
+| Rejection Sampling | Metropolis-Hastings Sampling |
+|--------------|-------------|
+| ![Optimal Grid](./images/rejection_sampling.png) | ![Learnt Grid](./images/metropolis_hastings_sampling.png) |

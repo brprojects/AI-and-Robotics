@@ -30,11 +30,11 @@ iterations = 20000
 samples = rejection_sampling(iterations)
 print(len(samples))
 # Plot the histogram of samples
-plt.hist(samples, bins=150, density=True, alpha=0.5, color='b', label='Samples')
+plt.hist(samples, bins=100, density=True, alpha=0.5, color='b', label='Samples')
 
 # Plot the target distribution
 x = np.linspace(0, 80, 1000)
 plt.plot(x, target_distribution(x), 'r-', linewidth=2, label='Target Distribution')
 
-plt.show()
-# plt.savefig('../images/rejection_sampling.png')
+# plt.show()
+plt.savefig('../images/rejection_sampling.png')

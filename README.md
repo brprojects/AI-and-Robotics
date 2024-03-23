@@ -33,11 +33,6 @@ The trained agent's performance is evaluated against the optimal strategy using 
 The agent's strategy can be visualised as a grid with dealer card and player total as the axis, for the situation when the player has and doesn't have a usable ace. The optimal strategy is shown on the left and the agent's learnt strategy is on the right.  By the end of the training,
 the agent’s policy looks similar to this optimal strategy, differing mainly on fringe cases which would not have a major impact on the agent’s overall win rate. For example, the agent will choose to hit if the player total is 12 and the dealer is showing a 4, whilst the optimal strategy would suggest standing. The expected value of hitting in this scenario is −0.211161 whilst the expected value of standing is −0.211100. Since the expected values are so close the agent would need many more episodes and a much smaller learning rate before it would correctly decide to stand.
 
-<div style="display:flex;">
-  <div style="flex:1; padding-right:5px;">
-    <img src="./images/optimal_grid.png" alt="Optimal Grid" width="400"/>
-  </div>
-  <div style="flex:1; padding-left:5px;">
-    <img src="./images/learnt_grid.png" alt="Learnt Grid" width="400"/>
-  </div>
-</div>
+| Optimal Strategy | Learnt Strategy |
+|--------------|-------------|
+| ![Optimal Grid](./images/optimal_grid.png) | ![Learnt Grid](./images/learnt_grid.png) |

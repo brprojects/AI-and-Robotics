@@ -1,8 +1,11 @@
 # AI and Robotics Projects
 
+This repository contains a series of projects centered around Artificial Intelligence (AI) and Robotics. From Reinforcement Learning strategies to path planning algorithms and robot localization and mapping examples, these projects showcase various applications and implementations in the field.
+
 ## Table of Contents
 - [Reinforcement Learning for Optimal Blackjack Strategy](#reinforcement-learning-for-optimal-blackjack-strategy)
 - [Path Planning (Dijkstra's, A* and Potential Field)](#path-planning)
+- [Localisation and Mapping (Bayes Filter and Occupancy Mapping)](#localisation-and-mapping)
 - [Distribution Sampling (Rejection and Metropolis-Hastings)](#distribution-sampling)
 
 ## Reinforcement Learning for Optimal Blackjack Strategy
@@ -77,7 +80,7 @@ The image below shows Dijkstra's solution to the maze with:
 - Light gray pixels - explored empty space
 - Dark gray pixels - optimal route found
 
-![Optimal Grid](./images/Dijkstra.png)
+![Dijkstra](./images/Dijkstra.png)
 
 #### A* Algorithm
 A* (pronounced "A star") is an informed search algorithm that uses both the actual cost of reaching a node from the start node (g-value) and an estimate of the cost from the node to the goal (h-value). It selects the next node to explore based on the sum of these two values (f-value), prioritizing nodes that are likely to lead to the goal. A* is complete and optimal when a consistent heuristic is used.
@@ -86,7 +89,7 @@ The images below show that the optimal route was found quicker when a large heur
 
 | Heuristic = 3 | Heuristic = 100 |
 |--------------|-------------|
-| ![Optimal Grid](./images/A_star.png) | ![Learnt Grid](./images/A_star2.png) |
+| ![A star](./images/A_star.png) | ![A star2](./images/A_star2.png) |
 
 #### Potential Field Algorithm
 The Potential Field algorithm is a reactive approach to path planning, commonly used in robotics. It models the environment as a potential field where attractive forces guide the robot towards the goal and repulsive forces avoid obstacles. The robot moves by following the gradient of the potential field towards the goal while avoiding obstacles.
@@ -97,7 +100,41 @@ A weakness of the potential field algorithm is that the robot can get stuck in a
 
 | Not Getting Stuck | Getting stuck |
 |--------------|-------------|
-| ![Optimal Grid](./images/potential_field.png) | ![Optimal Grid](./images/potential_field2.png) |
+| ![Potential field](./images/potential_field.png) | ![Potential field stuck](./images/potential_field2.png) |
+
+
+## Localisation and Mapping
+
+### Overview
+This project contains code for implementing localization and mapping algorithms for robotics applications. In this repository, we explore creating a Bayes Filter with a motion and sensor model to estimate robot location and create an occupancy grid from laser measurements and robot poses. 
+
+### Project Structure
+- `bayes_filter.py`: script for 1D Bayesian Filter to estimate location of a robot
+- `grid_mapping.py`: script to create occupancy mapping from poses and ranges data
+- `bresenham.py`: implementation of Bresenham's line drawing algorithm
+
+### Results
+
+#### Bayes Filter
+The Bayes filter is a probabilistic algorithm used for state estimation in robotics and other dynamic systems. It combines information from sensor measurements and control inputs to estimate the probability distribution over the state of the system. It involves a motion and sensor model: 
+- The motion model describes the uncertainty in the motion of the system, such as velocity or acceleration, and predicts the future state of the system based on the current state and control inputs.
+- The sensor model describes the uncertainty in sensor measurements and predicts the likelihood of observing a particular measurement given the true state of the system.
+
+The results below show the probability of the robot being in each state in a 1D world of black and white tiles. The robot can sense the colour of the tile it is currently on, but has imperfect motion and sensors. The figure on the left is for a known starting point, whilst the figure on the right is for when the starting point is unknown.
+
+| Known Starting Point | Unknown Starting Point |
+|--------------|-------------|
+| ![Bayes](./images/bayes_filter.png) | ![Bayes2](./images/bayes_filter2.png) |
+
+#### Occupancy Mapping
+
+Occupancy grid mapping is a process of building a map of the environment based on sensor measurements and robot poses. In this script, I use laser scan ranges to update an occupancy grid map, which represents the likelihood of each grid cell being occupied by an obstacle.
+
+Using log-odds instead of probabilities is crucial in occupancy grid mapping due to its benefits in numerical stability, efficient representation, and it facilitates additive operations.
+
+The results shown below show the pose and range measurements represent the floor plan of a building. The lines extending past the walls of the building are due to the laser scanner passing through a window.
+
+![Occupancy mapping](./images/occupancy_map.png)
 
 
 ## Distribution Sampling
@@ -107,13 +144,14 @@ A weakness of the potential field algorithm is that the robot can get stuck in a
 This repository contains Python implementations of the Metropolis-Hastings and rejection sampling algorithms. Metropolis-Hastings is a Markov chain Monte Carlo (MCMC) method commonly used for sampling from complex probability distributions. Rejection sampling is a simple and widely used method for generating samples from a target probability distribution
 
 ### Project Structure
-`metropolis_hastings_sampling.py`: Implementation of the Metropolis-Hastings algorithm.
-`rejection_sampling.py`: Implementation of the rejection sampling algorithm.
+- `metropolis_hastings_sampling.py`: Implementation of the Metropolis-Hastings algorithm.
+- `rejection_sampling.py`: Implementation of the rejection sampling algorithm.
 
 ### Results
 
 Target distribution: `0.5×Norm(x;μ1=20,σ1=3)+0.5×Norm(x;μ2=40,σ2=10)`  
 As shown below, both rejection and Metropolis-Hastings are able to effectively sample from the underlying distribution. However, in 20,000 samples, rejection sampling only obtains 3629 valid samples, an acceptance rate of only 18%. Metropolis-Hastings algorithm guarantees a valid sample for every attempted sample.
+
 | Rejection Sampling | Metropolis-Hastings Sampling |
 |--------------|-------------|
-| ![Optimal Grid](./images/rejection_sampling.png) | ![Learnt Grid](./images/metropolis_hastings_sampling.png) |
+| ![rejection](./images/rejection_sampling.png) | ![MH](./images/metropolis_hastings_sampling.png) |

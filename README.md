@@ -109,9 +109,9 @@ A weakness of the potential field algorithm is that the robot can get stuck in a
 This project contains code for implementing localization and mapping algorithms for robotics applications. In this repository, we explore creating a Bayes Filter with a motion and sensor model to estimate robot location and create an occupancy grid from laser measurements and robot poses. 
 
 ### Project Structure
-- `bayes_filter.py`: script for 1D Bayesian Filter to estimate location of a robot
-- `grid_mapping.py`: script to create occupancy mapping from poses and ranges data
-- `bresenham.py`: implementation of Bresenham's line drawing algorithm
+- `bayes_filter.py`: script for 1D Bayesian Filter to estimate location of a robot.
+- `grid_mapping.py`: script to create occupancy mapping from poses and ranges data.
+- `bresenham.py`: implementation of Bresenham's line drawing algorithm.
 
 ### Results
 

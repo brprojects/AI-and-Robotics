@@ -61,10 +61,10 @@ the agent’s policy looks similar to this optimal strategy, differing mainly on
 Path planning algorithms are used to find the shortest path between a start point and a goal point in a given environment. In this repository, we explore three common path planning algorithms: Dijkstra's, A* and Potential Field. These algorithms are implemented in Python and applied to solve a maze.
 
 ### Project Structure
-`create_maze.py`: script creates a maze represented as a numpy array, where 1s are walls and 0s are free space from an imported image (maze.png) of a maze.
-`Dijkstra.py`: implements Dijkstra's algorithm to solve the maze.
-`A_star.py`: implements A* algorithm to solve the maze.
-`potential_field.py`: implements the potential field algorithm to travel between start and end points with randomly generated obstacles in the way.
+- `create_maze.py`: script creates a maze represented as a numpy array, where 1s are walls and 0s are free space from an imported image (maze.png) of a maze.
+- `Dijkstra.py`: implements Dijkstra's algorithm to solve the maze.
+- `A_star.py`: implements A* algorithm to solve the maze.
+- `potential_field.py`: implements the potential field algorithm to travel between start and end points with randomly generated obstacles in the way.
 
 ### Results
 

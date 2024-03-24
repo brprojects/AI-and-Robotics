@@ -30,7 +30,7 @@ ax.tick_params(labelcolor='w', top=False, bottom=False, right=False, left=False)
 for i in range(4):
     ax1.scatter(21, 11, c = colours[i], marker = 's', label = labels[i], s = 250)
 
-data = np.load('.\learnt_strategy.npy'.format('30'))
+data = np.load('.\learnt_strategy.npy')
 # print(data)
 data_ace = data[18:,:]
 data_no_ace = data[:18,:] # need to plot both ace and no ace in separate tables in same figure
